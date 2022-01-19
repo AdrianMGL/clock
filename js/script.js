@@ -1,15 +1,15 @@
 /*==================== CLOCK ====================*/
 const hour = document.getElementById('clock-hour'),
-      minutes = document.getElementById('clock-minutes'),
-      seconds = document.getElementById('clock-seconds')
+    minutes = document.getElementById('clock-minutes'),
+    seconds = document.getElementById('clock-seconds')
 
-const clock = () =>{
+const clock = () => {
     let date = new Date()
 
     let hh = date.getHours() * 30,
         mm = date.getMinutes() * 6,
         ss = date.getSeconds() * 6
-        
+
     // We add a rotation to the elements
     hour.style.transform = `rotateZ(${hh + mm / 12}deg)`
     minutes.style.transform = `rotateZ(${mm}deg)`
@@ -19,14 +19,14 @@ setInterval(clock, 1000) // 1000 = 1s
 
 /*==================== CLOCK & DATE TEXT ====================*/
 const textHour = document.getElementById('text-hour'),
-      textMinutes = document.getElementById('text-minutes'),
-      textAmPm = document.getElementById('text-ampm'),
+    textMinutes = document.getElementById('text-minutes'),
+    textAmPm = document.getElementById('text-ampm'),
     //   dateWeek = document.getElementById('date-day-week'),
-      dateDay = document.getElementById('date-day'),
-      dateMonth = document.getElementById('date-month'),
-      dateYear = document.getElementById('date-year')
+    dateDay = document.getElementById('date-day'),
+    dateMonth = document.getElementById('date-month'),
+    dateYear = document.getElementById('date-year')
 
-const clockText = () =>{
+const clockText = () => {
     let date = new Date()
 
     let hh = date.getHours(),
@@ -38,25 +38,25 @@ const clockText = () =>{
         year = date.getFullYear()
 
     // We change the hours from 24 to 12 hours and establish whether it is AM or PM
-    if(hh >= 12){
+    if (hh >= 12) {
         hh = hh - 12
         ampm = 'PM'
-    }else{
+    } else {
         ampm = 'AM'
     }
 
     // We detect when it's 0 AM and transform to 12 AM
-    if(hh == 0){hh = 12}
+    if (hh == 0) { hh = 12 }
 
     // Show a zero before hours
-    if(hh < 10){hh = `0${hh}`}
+    if (hh < 10) { hh = `0${hh}` }
 
     // Show time
     textHour.innerHTML = `${hh}:`
-    
+
     // Show a zero before the minutes
-    if(mm < 10){mm = `0${mm}`}
-    
+    if (mm < 10) { mm = `0${mm}` }
+
     // Show minutes
     textMinutes.innerHTML = mm
 
@@ -67,12 +67,15 @@ const clockText = () =>{
     // let week = ['Sun', 'Mon', 'Tues', 'Wed', 'Thurs', 'Fri', 'Sat']
 
     // We get the months of the year and show it
-    let months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+
+    // let monthsEnglesh = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+
+    let monthsSpanish = ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sept', 'Oct', 'Nov', 'Dic']
 
     // We show the day, the month and the year
     dateDay.innerHTML = day
     // dateWeek.innerHTML = `${week[dayweek]}`
-    dateMonth.innerHTML = `${months[month]},`
+    dateMonth.innerHTML = `${monthsSpanish[month]},`
     dateYear.innerHTML = year
 }
 setInterval(clockText, 1000) // 1000 = 1s
@@ -92,9 +95,9 @@ const getCurrentIcon = () => themeButton.classList.contains(iconTheme) ? 'bxs-mo
 
 // We validate if the user previously chose a topic
 if (selectedTheme) {
-  // If the validation is fulfilled, we ask what the issue was to know if we activated or deactivated the dark
-  document.body.classList[selectedTheme === 'dark' ? 'add' : 'remove'](darkTheme)
-  themeButton.classList[selectedIcon === 'bxs-moon' ? 'add' : 'remove'](iconTheme)
+    // If the validation is fulfilled, we ask what the issue was to know if we activated or deactivated the dark
+    document.body.classList[selectedTheme === 'dark' ? 'add' : 'remove'](darkTheme)
+    themeButton.classList[selectedIcon === 'bxs-moon' ? 'add' : 'remove'](iconTheme)
 }
 
 // Activate / deactivate the theme manually with the button
