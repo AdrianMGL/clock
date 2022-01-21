@@ -4,14 +4,14 @@
 /*=============== GLOBAL STYLE ===============*/
 :root {
   /*========== Colors ==========*/
-  /*color base: blue 240, purple 300 green 150 */
-  --hue-color: 550;
+  /*color base: brown 10 blue 240, purple 300 green 150, 550 */
+  --hue-color: 240;
 
-  --first-color: hsl(var(--hue-color), 53%, 49%);
-  --title-color: hsl(var(--hue-color), 53%, 15%);
-  --text-color: hsl(var(--hue-color), 12%, 35%);
-  --text-color-light: hsl(var(--hue-color), 12%, 65%);
-  --text-color-light2: hsl(var(--hue-color), 12%, 83%);
+  --first-color: hsl(var(--hue-color), 63%, 39%);
+  --title-color: hsl(var(--hue-color), 60%, 70%);
+  --text-color: hsl(var(--hue-color), 22%, 25%);
+  --text-color-light: hsl(var(--hue-color), 22%, 55%);
+  --text-color-light2: hsl(var(--hue-color), 22%, 73%);
 
   --white-color: #fff;
   --body-color: hsl(var(--hue-color), 24%, 94%);
@@ -51,13 +51,14 @@ body.dark-theme {
   --title-color: hsl(var(--hue-color), 12%, 95%);
   --text-color: hsl(var(--hue-color), 12%, 75%);
   --body-color: hsl(var(--hue-color), 10%, 16%);
+  /* z-index: 9500; */
 }
 
 /*========== Button Dark/Light ==========*/
 .clock__theme {
   position: absolute;
   top: -1rem;
-  right: -1rem;
+  left: -1rem;
   display: flex;
   padding: 0.25rem;
   border-radius: 50%;
@@ -66,6 +67,7 @@ body.dark-theme {
   color: var(--first-color);
   cursor: pointer;
   transition: 0.4s; /* For dark mode animation*/
+  /* z-index: 9501; */
 }
 
 /*========== Box shadow Dark theme ==========*/
@@ -74,11 +76,13 @@ body.dark-theme {
     -6px -6px 16px hsla(var(--hue-color), 8%, 20%, 1),
     inset -6px -6px 16px hsla(var(--hue-color), 8%, 20%, 1),
     inset 6px 6px 12px hsla(var(--hue-color), 8%, 12%, 1);
+  /* z-index: 9500; */
 }
 
 .dark-theme .clock__theme {
   box-shadow: inset -1px -1px 1px hsla(var(--hue-color), 8%, 20%, 1),
     inset 1px 1px 1px hsla(var(--hue-color), 8%, 12%, 1);
+  /* z-index: 9500; */
 }
 
 /*=============== BASE ===============*/
@@ -349,8 +353,11 @@ a {
 
 .clock__date {
   text-align: center;
-  font-size: var(--small-font-size);
+  color: var(--title-color);
+  font-size: var(--smaller-font-size);
   font-weight: var(--font-medium);
+  /* color: #909090; */
+  /* background-color: #20c997; */
 }
 
 /*=============== MEDIA QUERIES ===============*/
@@ -363,4 +370,23 @@ a {
   .clock__logo {
     margin-bottom: 3rem;
   }
+}
+
+/* ======================= BACKGROUND IMAGE ========================== */
+
+.container h1 {
+  text-align: center;
+  font-size: 40px;
+}
+
+#canvas-image-blending {
+  position: absolute;
+  display: block;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  z-index: -1000;
 }

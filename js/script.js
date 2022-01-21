@@ -37,7 +37,7 @@ const clockText = () => {
         month = date.getMonth(),
         year = date.getFullYear()
 
-    // We change the hours from 24 to 12 hours and establish whether it is AM or PM
+    // Establish whether it is AM or PM
     if (hh >= 12) {
         hh = hh - 12
         ampm = 'PM'
@@ -78,7 +78,7 @@ const clockText = () => {
     dateMonth.innerHTML = `${monthsSpanish[month]},`
     dateYear.innerHTML = year
 }
-setInterval(clockText, 1000) // 1000 = 1s
+setInterval(clockText, 1000)
 
 /*==================== DARK/LIGHT THEME ====================*/
 const themeButton = document.getElementById('theme-button')
@@ -109,3 +109,107 @@ themeButton.addEventListener('click', () => {
     localStorage.setItem('selected-theme', getCurrentTheme())
     localStorage.setItem('selected-icon', getCurrentIcon())
 })
+
+/** ============================= BACKGROUND IMAGE ==================================== */
+
+// create instance
+let granimInstance = new Granim({
+    element: "#canvas-image-blending",
+    direction: 'top-bottom',
+    isPausedWhenNotInView: true,
+    image: {
+        source: './img/background.jpg',
+        blendingMode: 'multiply',
+        stretchMode: ['stretch', 'stretch-if-bigger']
+    },
+    states: {
+        "default-state": {
+            gradients: [
+                ['#DAE2F8', '#DAE2F8'],
+                // ['#e35d5b', '#f0cb35'],
+                // ['#0F2027', '#8E9EAB']
+            ],
+            transitionSpeed: 4000,
+            loop: false
+        },
+        "evening-state": {
+            gradients: [
+                // ['#DAE2F8', '#DAE2F8'],
+                ['#e35d5b', '#f0cb35'],
+                // ['#0F2027', '#8E9EAB']
+            ],
+            transitionSpeed: 4000,
+            loop: false
+        },
+        "dark-state": {
+            gradients: [
+                // ['#DAE2F8', '#DAE2F8'],
+                // ['#e35d5b', '#f0cb35'],
+                ['#0F2027', '#8E9EAB']
+            ],
+            transitionSpeed: 4000,
+            loop: false
+        }
+    }
+})
+
+
+const heading = document.querySelector(".container h1"),
+    morning = document.getElementById("morning"),
+    evening = document.getElementById("evening"),
+    night = document.getElementById("night")
+
+/** */
+let dateZone = new Date(),
+    h = dateZone.getHours();
+
+const clockDate = document.querySelector('.clock__date'),
+    dateClock = document.getElementById('clock__date'),
+
+    ddateDay = document.getElementById('date-day'),
+    ddateMonth = document.getElementById('date-month'),
+    ddateYear = document.getElementById('date-year')
+
+// We change the hours from 24 to 12 hours and establish whether it is AM or PM
+if (h >= 0 && h <= 12) {
+    granimInstance.changeState('default-state')
+    heading.innerHTML = "Morning";
+    heading.classList.remove('animate__animated', 'animate__swing');
+    heading.classList.remove('animate__animated', 'animate__rubberBand');
+    heading.classList.add('animate__animated', 'animate__bounce');
+    morning.style.backgroundColor = '#20c997';
+    morning.style.fontWeight = 'bold';
+    night.style.backgroundColor = '';
+    night.style.fontWeight = '';
+    evening.style.backgroundColor = '';
+    evening.style.fontWeight = '';
+
+} if (h >= 12 && h <= 18) {
+
+    granimInstance.changeState('evening-state');
+    heading.innerHTML = "Evening";
+    heading.classList.remove('animate__animated', 'animate__bounce');
+    heading.classList.remove('animate__animated', 'animate__rubberBand');
+    heading.classList.add('animate__animated', 'animate__swing');
+    evening.style.backgroundColor = '#20c997';
+    evening.style.fontWeight = 'bold';
+    morning.style.backgroundColor = '';
+    morning.style.fontWeight = '';
+    night.style.backgroundColor = '';
+    night.style.fontWeight = '';
+
+
+} else {
+    granimInstance.changeState('dark-state')
+    heading.innerHTML = "Night"
+    heading.classList.remove('animate__animated', 'animate__swing');
+    heading.classList.remove('animate__animated', 'animate__bounce');
+    heading.classList.add('animate__animated', 'animate__rubberBand');
+    night.style.backgroundColor = '#20c997';
+    night.style.fontWeight = 'bold';
+    evening.style.backgroundColor = '';
+    evening.style.fontWeight = '';
+    morning.style.backgroundColor = '';
+    morning.style.fontWeight = '';
+}
+/** */

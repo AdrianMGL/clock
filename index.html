@@ -12,12 +12,51 @@
     <!--==================== BOXICONS ====================-->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
 
+    <!-- animate -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+
     <!--==================== CSS ==========-->
+    <link rel="stylesheet" href="./css/particle.css">
+
     <link rel="stylesheet" href="./css/style.css">
 
 </head>
 
 <body>
+    <!-- particle ball -->
+    <div id="particle-container">
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+    </div>
+
 
     <section class="clock container">
         <div class="clock__container grid">
@@ -54,23 +93,30 @@
                         <div class="clock__text-ampm" id="text-ampm"></div>
                     </div>
 
-                    <div class="clock__date">
-                        <!-- <span id="date-day-week"></span> -->
+                    <div class="clock__date" id="clock__date">
                         <span id="date-day"></span>
                         <span id="date-month"></span>
                         <span id="date-year"></span>
                     </div>
                 </div>
+                <div class="container">
+                    <h1 class="text-white animate__animated animate__rubberBand">Morning</h1>
+                    <div class="buttons d-flex justify-content-center">
+                    </div>
+                </div>
+                <canvas id="canvas-image-blending"></canvas>
             </div>
-
-            <a href="https://www.youtube.com/c/Bedimcode/" target="_blank" class="clock__logo">© 2021 Adrien Guzmán. All
-                rights reserved.</a>
+            <a href="#" target="_blank" class="clock__logo">© 2021 Adrien Guzmán. All rights reserved.</a>
         </div>
     </section>
 
-
-
     <!--==================== MAIN JS ====================-->
+
+    <!-- ajax granim -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/granim/2.0.0/granim.min.js"
+        integrity="sha512-CmlPTWm5+a1Gt2YSNk2rGZVvbH3Zge6imS7M4/vrhC8d+A1RcehmLxWMqUdv8aEu7pwfTo74EtnrR+8Cf8KdCA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
     <script src="./js/script.js"></script>
 </body>
 
